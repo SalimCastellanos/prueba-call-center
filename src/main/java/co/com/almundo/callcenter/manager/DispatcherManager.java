@@ -1,9 +1,11 @@
 package co.com.almundo.callcenter.manager;
 
-import co.com.almundo.callcenter.models.Operator;
+import java.util.concurrent.ExecutionException;
+
+import co.com.almundo.callcenter.models.ResponseModel;
 
 public interface DispatcherManager {
 	
-	public Operator dispatchCall();
+	public ResponseModel dispatchCall() throws InterruptedException, ExecutionException;
 
 }
