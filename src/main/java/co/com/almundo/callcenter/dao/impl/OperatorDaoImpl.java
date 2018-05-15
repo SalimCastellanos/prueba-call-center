@@ -37,6 +37,24 @@ public class OperatorDaoImpl implements OperatorDao {
 			operador3.setCharge(Charges.OPERADOR);
 			operador3.setAvailable(true);
 			operators.add(operador3);
+			
+			Operator operador4 = new Operator();
+			operador4.setName("Operador4");
+			operador4.setCharge(Charges.OPERADOR);
+			operador4.setAvailable(true);
+			operators.add(operador4);
+			
+			Operator operador5 = new Operator();
+			operador5.setName("Operador4");
+			operador5.setCharge(Charges.OPERADOR);
+			operador5.setAvailable(true);
+			operators.add(operador5);
+			
+			Operator operador6 = new Operator();
+			operador6.setName("Operador6");
+			operador6.setCharge(Charges.OPERADOR);
+			operador6.setAvailable(true);
+			operators.add(operador6);
 
 			Operator supervisor1 = new Operator();
 			supervisor1.setName("Supervisor1");
@@ -49,6 +67,18 @@ public class OperatorDaoImpl implements OperatorDao {
 			supervisor2.setCharge(Charges.SUPERVISOR);
 			supervisor2.setAvailable(true);
 			operators.add(supervisor2);
+			
+			Operator supervisor3 = new Operator();
+			supervisor3.setName("Supervisor3");
+			supervisor3.setCharge(Charges.SUPERVISOR);
+			supervisor3.setAvailable(true);
+			operators.add(supervisor3);
+			
+			Operator supervisor4 = new Operator();
+			supervisor4.setName("Supervisor4");
+			supervisor4.setCharge(Charges.SUPERVISOR);
+			supervisor4.setAvailable(true);
+			operators.add(supervisor4);
 
 			Operator director1 = new Operator();
 			director1.setName("Director1");
