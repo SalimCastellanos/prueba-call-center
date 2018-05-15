@@ -7,9 +7,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import co.com.almundo.callcenter.manager.DispatcherManager;
 import co.com.almundo.callcenter.models.ResponseModel;
 import co.com.almundo.callcenter.util.Context;
@@ -35,19 +32,8 @@ public class DispatcherService {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ResponseModel getIt() {
-
-		ResponseModel responseCall = new ResponseModel();
-
-		try {
-			responseCall = dispatcher.dispatchCall();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-		}
-
-		return responseCall;
+	public ResponseModel getIt() throws InterruptedException, ExecutionException {
+		return dispatcher.dispatchCall();
 	}
 
 }

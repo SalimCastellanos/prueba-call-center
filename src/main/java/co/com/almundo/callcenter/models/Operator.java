@@ -4,6 +4,8 @@ public class Operator {
 
 	private String name;
 	private Charges charge;
+	
+	private boolean available;
 
 	public String getName() {
 		return name;
@@ -21,4 +23,12 @@ public class Operator {
 		this.charge = charge;
 	}
 
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
+	
 }
