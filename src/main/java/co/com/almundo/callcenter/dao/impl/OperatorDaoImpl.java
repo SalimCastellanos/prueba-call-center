@@ -14,6 +14,10 @@ public class OperatorDaoImpl implements OperatorDao {
 
 	private static ArrayList<Operator> operators = null;
 
+	/*
+	 * (non-Javadoc)
+	 * @see co.com.almundo.callcenter.dao.OperatorDao#getOperators()
+	 */
 	@Override
 	public List<Operator> getOperators() {
 
