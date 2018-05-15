@@ -17,6 +17,7 @@ import co.com.almundo.callcenter.dao.OperatorDao;
 import co.com.almundo.callcenter.manager.DispatcherManager;
 import co.com.almundo.callcenter.models.Operator;
 import co.com.almundo.callcenter.models.ResponseModel;
+import co.com.almundo.callcenter.models.StatusCall;
 
 @Component
 public class DispatcherManagerImpl implements DispatcherManager {
@@ -61,15 +62,19 @@ public class DispatcherManagerImpl implements DispatcherManager {
 				// Se obtiene tiempo duración de la llamada en segundos
 				int delay = getDelayCall();
 
-				processCall(delay);
-
 				if (!availableOperators.isEmpty()) {
 					freeOperator = availableOperators.get(0);
 				}
+				
+				processCall(delay);
+				
+				freeOperator.setAvailable(false);
 
 				ResponseModel response = new ResponseModel();
 				response.setOperator(freeOperator);
 				response.setCallDurationInSeconds(delay);
+				freeOperator.setAvailable(false);
+				response.setStatus(StatusCall.FINALIZA_OK);
 
 				return response;
 			}

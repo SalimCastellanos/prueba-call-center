@@ -5,6 +5,8 @@ public class ResponseModel {
 	private Operator operator;
 
 	private int callDurationInSeconds;
+	
+	private StatusCall status;
 
 	public Operator getOperator() {
 		return operator;
@@ -22,4 +24,12 @@ public class ResponseModel {
 		this.callDurationInSeconds = callDurationInSeconds;
 	}
 
+	public StatusCall getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusCall status) {
+		this.status = status;
+	}
+	
 }

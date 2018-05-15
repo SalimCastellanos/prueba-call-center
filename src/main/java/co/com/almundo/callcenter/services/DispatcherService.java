@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 
 import co.com.almundo.callcenter.manager.DispatcherManager;
 import co.com.almundo.callcenter.models.ResponseModel;
+import co.com.almundo.callcenter.models.StatusCall;
 import co.com.almundo.callcenter.util.Context;
 
 /**
@@ -32,8 +33,15 @@ public class DispatcherService {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ResponseModel getIt() throws InterruptedException, ExecutionException {
-		return dispatcher.dispatchCall();
+	public ResponseModel call() {
+		ResponseModel response = new ResponseModel();
+		try {
+			response = dispatcher.dispatchCall();
+		} catch (InterruptedException | ExecutionException e) {
+			response.setStatus(StatusCall.FINALIZADA_FALLAS);
+			e.printStackTrace();
+		}
+		return response;
 	}
 
 }
