@@ -2,6 +2,6 @@ package co.com.almundo.callcenter.models;
 
 public enum StatusCall {
 	
-	FINALIZA_OK, FINALIZADA_FALLAS, NO_FINALIZADA
+	FINALIZA_OK, FINALIZADA_FALLAS, NO_FINALIZADA, OPERADORES_NO_DISPONIBLES
 
 }

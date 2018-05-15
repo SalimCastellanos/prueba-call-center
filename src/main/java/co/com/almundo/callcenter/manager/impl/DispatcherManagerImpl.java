@@ -49,6 +49,8 @@ public class DispatcherManagerImpl implements DispatcherManager {
 		Callable<ResponseModel> callable = new Callable<ResponseModel>() {
 			@Override
 			public ResponseModel call() {
+				
+				ResponseModel response = new ResponseModel();
 
 				Operator freeOperator = null;
 
@@ -65,12 +67,16 @@ public class DispatcherManagerImpl implements DispatcherManager {
 				if (!availableOperators.isEmpty()) {
 					freeOperator = availableOperators.get(0);
 				}
+				else {
+					response.setStatus(StatusCall.OPERADORES_NO_DISPONIBLES);
+					return response;
+				}
 				
 				processCall(delay);
 				
 				freeOperator.setAvailable(false);
 
-				ResponseModel response = new ResponseModel();
+				
 				response.setOperator(freeOperator);
 				response.setCallDurationInSeconds(delay);
 				freeOperator.setAvailable(false);
