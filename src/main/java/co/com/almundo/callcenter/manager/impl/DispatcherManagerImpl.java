@@ -32,7 +32,7 @@ public class DispatcherManagerImpl implements DispatcherManager {
 	private final static int MIN_TIME_CALL = 5;
 
 	// Tiempo máximo llamada en segundos
-	private final static int MAX_TIME_CALL = 7;
+	private final static int MAX_TIME_CALL = 10;
 
 	@Autowired
 	OperatorDao operatorDao;
@@ -53,23 +53,17 @@ public class DispatcherManagerImpl implements DispatcherManager {
 		Callable<ResponseModel> callable = new Callable<ResponseModel>() {
 			@Override
 			public ResponseModel call() {
-				
 				ResponseModel response = new ResponseModel();
-
 				Operator freeOperator = null;
-
-				Random random = new Random();
-				int max = 10;
-				int min = 5;
-				int diff = max - min;
-				int i = random.nextInt(diff + 1);
-				i += min;
 
 				// Se obtiene tiempo duración de la llamada en segundos
 				int delay = getDelayCall();
 
 				if (!availableOperators.isEmpty()) {
 					freeOperator = availableOperators.get(0);
+					
+					// Al atender la llamada se hace no disponible el operador
+					freeOperator.setAvailable(false);
 				}
 				else {
 					response.setStatus(StatusCall.OPERADORES_NO_DISPONIBLES);
@@ -78,13 +72,12 @@ public class DispatcherManagerImpl implements DispatcherManager {
 				
 				processCall(delay);
 				
-				freeOperator.setAvailable(false);
-
-				
 				response.setOperator(freeOperator);
 				response.setCallDurationInSeconds(delay);
-				freeOperator.setAvailable(false);
 				response.setStatus(StatusCall.FINALIZA_OK);
+				
+				// Se hace de nuevo disponible el operador para atender otra llamada
+				freeOperator.setAvailable(true);
 
 				return response;
 			}
